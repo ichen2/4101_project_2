@@ -24,6 +24,9 @@ class Nil(Node):
     def isNull(self):
         return True
 
+    def eval(self, env):
+        raise Exception("Should not be calling eval on class Nil")
+
 if __name__ == "__main__":
     n = Nil.getInstance()
     n.print(0)
