@@ -92,12 +92,19 @@ class Environment(Node):
             return val.getCar()
 
     def define(self, id, value):
-        # TODO: implement this function
-        pass
+       frame = Cons(id, Cons(value,Nil.getInstance()))
 
     def assign(self, id, value):
-        # TODO: implement this function
-        pass
+        val = Environment.__find(id, self.frame)
+        if val == None and self.env == None:
+            self._error("undefined variable " + id.getName())
+            return Nil.getInstance()
+        elif val == None:
+            # look up the identifier in the enclosing scope
+            return self.env.assign(id,value)
+        else:
+            # set the value of the list we got to 'value'
+            return val.setCar(value)
 
 if __name__ == "__main__":
     env = Environment()
