@@ -85,6 +85,7 @@ class Environment(Node):
             self._error("undefined variable " + id.getName())
             return Nil.getInstance()
         elif val == None:
+            print("look in next env")
             # look up the identifier in the enclosing scope
             return self.env.lookup(id)
         else:
@@ -92,7 +93,7 @@ class Environment(Node):
             return val.getCar()
 
     def define(self, id, value):
-       frame = Cons(id, Cons(value,Nil.getInstance()))
+       self.frame = Cons(id, Cons(value,Nil.getInstance()))
 
     def assign(self, id, value):
         val = Environment.__find(id, self.frame)

@@ -4,6 +4,7 @@ import sys
 from Parse import *
 from Tokens import TokenType
 from Tree import StrLit
+from Tree import IntLit
 from Tree import Ident
 from Tree import Cons
 from Tree import TreeBuilder
@@ -62,6 +63,7 @@ if __name__ == "__main__":
         # Environment.populateEnv(env, ini_file)
         env = Environment(env)
         BuiltIn.setEnv(env)
+        env.define(Ident('x'), IntLit(7))
 
         # Read-eval-print loop
 
