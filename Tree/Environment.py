@@ -93,7 +93,7 @@ class Environment(Node):
             return val.getCar()
 
     def define(self, id, value):
-       self.frame = Cons(id, Cons(value,Nil.getInstance()))
+       self.frame = Cons(Cons(id, Cons(value,Nil.getInstance())),self.frame)
 
     def assign(self, id, value):
         val = Environment.__find(id, self.frame)
