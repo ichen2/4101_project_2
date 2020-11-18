@@ -85,7 +85,6 @@ class Environment(Node):
             self._error("undefined variable " + id.getName())
             return Nil.getInstance()
         elif val == None:
-            print("look in next env")
             # look up the identifier in the enclosing scope
             return self.env.lookup(id)
         else:

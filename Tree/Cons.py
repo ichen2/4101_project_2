@@ -44,6 +44,9 @@ class Cons(Node):
 
     def isPair(self):
         return True
+    
+    def eval(self, env):
+        return self.form.eval(self, env)
 
 if __name__ == "__main__":
     c = Cons(Ident("Hello"), Ident("World"))

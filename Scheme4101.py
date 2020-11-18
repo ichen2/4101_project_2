@@ -63,9 +63,6 @@ if __name__ == "__main__":
         # Environment.populateEnv(env, ini_file)
         env = Environment(env)
         BuiltIn.setEnv(env)
-        env.define(Ident('x'), IntLit(7))
-        env.define(Ident('y'), IntLit(6))
-        env.define(Ident('x'), IntLit(5))
 
         # Read-eval-print loop
 

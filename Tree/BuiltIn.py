@@ -85,3 +85,27 @@ class BuiltIn(Node):
         #     except IOError:
         #         self._error("could not find file " + filename)
         #     return Nil.getInstance()  # or Unspecific.getInstance()
+        
+        # this may or may not work
+
+        # get args (arg 1 is the car, arg 2 is the car of the cdr)
+        if args == None:
+            return Nil.getInstance()
+        name = self.symbol.getName()
+        car = args.getCar()
+        if car.isNull():
+            car = Nil.getInstance()
+        cdr = args.getCdr()
+        # if there is no arg 2, just set it to nil
+        if cdr.isNull():
+            cdr = Nil.getInstance()
+        # otherwise arg2 is the car of the cdr
+        else:
+            cdr = cdr.getCar()
+
+        if name == "b+":
+            if car.isNumber() and cdr.isNumber():
+                return IntLit(car.getVal() + cdr.getVal())
+            else:
+                print("Invalid arguments for b+")
+                return StrLit("")

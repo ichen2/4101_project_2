@@ -10,3 +10,6 @@ class Quote(Special):
 
     def print(self, t, n, p):
         Printer.printQuote(t, n, p)
+
+    def eval(self, exp, env):
+        return exp.getCdr().gtCar()

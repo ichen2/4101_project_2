@@ -23,3 +23,6 @@ class Special(ABC):
     def _error(self, msg):
         sys.stderr.write("Error: " + msg + "\n")
         sys.stderr.flush()
+
+    def eval(self, exp, env):
+        print("eval for this special has not been defined")
