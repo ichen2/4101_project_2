@@ -25,4 +25,5 @@ class Define(Special):
         # if defining a function
         else:
             func = Closure(Cons(exp.getCdr().getCar().getCdr(),exp.getCdr().getCdr()),env)
+            env.define(key.getCar(),func)
         return StrLit("no values returned")
