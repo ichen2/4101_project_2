@@ -12,3 +12,12 @@ class Cond(Special):
 
     def print(self, t, n, p):
         Printer.printCond(t, n, p)
+    
+    def eval(self, exp, env):
+        cond = exp.getCdr()
+        while(cond.getCdr() != Nil.getInstance() and cond.getCar().getCar().eval(env) == BoolLit.getInstance(False)):
+            cond = cond.getCdr()
+        if cond.getCar().getCdr() != Nil.getInstance():
+            return cond.getCar().getCdr().eval(env)
+        else:
+            return cond.getCar().eval(env)
