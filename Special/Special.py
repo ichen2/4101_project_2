@@ -4,6 +4,7 @@ import sys
 from abc import ABC, abstractmethod
 from Tree import Nil
 from Tree import Cons
+from Tree import StrLit
 
 # There are several different approaches for how to implement the Special
 # hierarchy.  We'll discuss some of them in class.  The easiest solution
@@ -25,4 +26,4 @@ class Special(ABC):
         sys.stderr.flush()
 
     def eval(self, exp, env):
-        print("eval for this special has not been defined")
+        return StrLit("eval for this special has not been defined")

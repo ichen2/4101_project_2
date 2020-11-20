@@ -10,3 +10,6 @@ class Regular(Special):
 
     def print(self, t, n, p):
         Printer.printRegular(t, n, p)
+
+    def eval(self, exp, env):
+        return exp.car.eval(env)

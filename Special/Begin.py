@@ -10,3 +10,11 @@ class Begin(Special):
 
     def print(self, t, n, p):
         Printer.printBegin(t, n, p)
+
+    
+    def eval(self, exp, env):
+        curr = exp
+        while(curr.getCdr() != Nil.getInstance()):
+            curr = curr.getCdr()
+            last = curr.eval(env)
+        return last
