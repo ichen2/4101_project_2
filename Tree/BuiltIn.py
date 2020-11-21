@@ -141,13 +141,34 @@ class BuiltIn(Node):
             if car.isNumber() and cdr.isNumber():
                 x = car.intVal
                 y = cdr.intVal
-                return BoolLit(x < y)
+                return BoolLit.getInstance(x < y)
             else:
                 return StrLit("Invalid arguments for b<")
         elif name == "b>":
             if car.isNumber() and cdr.isNumber():
                 x = car.intVal
                 y = cdr.intVal
-                return BoolLit(x > y)
+                return BoolLit.getInstance(x > y)
             else:
                 return StrLit("Invalid arguments for b>")
+        elif name == "car":
+            if car.isPair():
+                return car.getCar()
+            return StrLit("Wrong number of arguements")
+        elif name == "cdr":
+            if car.isPair():
+                return car.getCdr()
+            return StrLit("Wrong number of arguements")
+        elif name == "cons":
+            if cdr.isPair():
+                return Cons(car, cdr)
+            return StrLit("Wrong number of arguements")
+        elif name == "set-car!": #does this work??
+            car.setCar(cdr)
+            return car
+        elif name == "set-cdr!": #does this work??
+            car.setCdr(cdr)
+            return car
+        elif name == "symbol?":
+            car.setCar(cdr)
+            return car
