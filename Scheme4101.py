@@ -60,14 +60,93 @@ if __name__ == "__main__":
 
         env = Environment()
         BuiltIn.setEnv(env)
-        # Environment.populateEnv(env, ini_file)
 
+        #Environment.populateEnv(env, ini_file)
         id = Ident("b+")
         env.define(id, BuiltIn(id))
+
+        id = Ident("b-")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("b*")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("b/")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("b=")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("b<")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("b>")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("car")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("cdr")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("cons")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("set-car!")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("set-cdr!")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("symbol?")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("number?")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("null?")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("pair?")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("eq?")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("procedure?")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("display")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("newline")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("read")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("write")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("eval")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("apply")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("interaction-environment")
+        env.define(id, BuiltIn(id))
+
+        id = Ident("load")
+        env.define(id, BuiltIn(id))
+
 
         env = Environment(env)
         BuiltIn.setEnv(env)
 
+
+
+        
         # Read-eval-print loop
 
         sys.stdout.write(prompt)
