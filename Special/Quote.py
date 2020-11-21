@@ -12,4 +12,4 @@ class Quote(Special):
         Printer.printQuote(t, n, p)
 
     def eval(self, exp, env):
-        return exp.getCdr().gtCar()
+        return exp.getCdr().getCar()

@@ -147,7 +147,14 @@ if __name__ == "__main__":
 
 
         
-        # Read-eval-print loop
+        scanner2 = Scanner(open("ini.scm"))
+        builder2 = TreeBuilder()
+        parser2 = Parser(scanner2, builder)
+
+        root = parser2.parseExp()
+        while root != None:
+                root.eval(BuiltIn.env)
+                root = parser2.parseExp()
 
         sys.stdout.write(prompt)
         sys.stdout.flush()
