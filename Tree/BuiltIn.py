@@ -170,5 +170,36 @@ class BuiltIn(Node):
             car.setCdr(cdr)
             return car
         elif name == "symbol?":
-            car.setCar(cdr)
+            return BoolLit.getInstance(car.isSymbol())
+        elif name == "number?":
+            return BoolLit.getInstance(car.isNumber())
+        elif name == "null?":
+            return BoolLit.getInstance(car == Nil.getInstance())
+        elif name == "pair?":
+            return BoolLit.getInstance(car.isPair())
+        elif name == "eq?":#come back to this
+            if car.isBool() and cdr.isBool():#
+                BoolLit.getInstance(car.eval(self.env) == cdr.eval(self.env))#
+
+        elif name == "procedure?":
+            return BoolLit.getInstance(car.isProcedure())
+        elif name == "display":
             return car
+        elif name == "newline":#come back to this
+            return StrLit('\n')
+        #elif name == "read":
+        #   #  parser = Parser(Scanner(sys.stdin),))#com back to this
+        # elif name == "write":#come back to this
+        #     car.print(0)
+        #     return StrLit("")
+        # elif name == "eval":#come back
+        #     return car
+        # elif name == "apply":#come back
+        #     return car.apply(cdr)
+        # elif name == "interaction-development":#come back
+        #     interaction_environment.print(0)
+        # elif name == "load": #come back
+        #     return BoolLit.getInstance(car.isProcedure())
+        # else:
+        #     #what on earth do we do heres
+        return StrLit(">")
