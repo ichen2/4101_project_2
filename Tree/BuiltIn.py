@@ -61,8 +61,6 @@ class BuiltIn(Node):
     # to report an error.  It should be overridden only in classes
     # BuiltIn and Closure.
     def apply(self, args):
-        self.print("fdsddf")
-        #return StrLit("Error: BuiltIn.apply not yet implemented")
 
         ## The easiest way to implement BuiltIn.apply is as an
         ## if-then-else chain testing for the different names of
@@ -106,8 +104,50 @@ class BuiltIn(Node):
         
         if name == "b+":
             if car.isNumber() and cdr.isNumber():
-                print("sdhfahl")
-                return IntLit(car.getVal() + cdr.getVal())
+                x = car.intVal
+                y = cdr.intVal
+                return IntLit(x + y)
             else:
-                print("Invalid arguments for b+")
-                return StrLit("")
+                return StrLit("Invalid arguments for b+")
+        elif name == "b-":
+            if car.isNumber() and cdr.isNumber():
+                x = car.intVal
+                y = cdr.intVal
+                return IntLit(x - y)
+            else:
+                return StrLit("Invalid arguments for b-")
+        elif name == "b*":
+            if car.isNumber() and cdr.isNumber():
+                x = car.intVal
+                y = cdr.intVal
+                return IntLit(x * y)
+            else:
+                return StrLit("Invalid arguments for b*")
+        elif name == "b/":
+            if car.isNumber() and cdr.isNumber():
+                x = car.intVal
+                y = cdr.intVal
+                return IntLit(x / y)
+            else:
+                return StrLit("Invalid arguments for b/")
+        elif name == "b=":
+            if car.isNumber() and cdr.isNumber():
+                x = car.intVal
+                y = cdr.intVal
+                return BoolLit.getInstance(x == y)
+            else:
+                return StrLit("Invalid arguments for b=")
+        elif name == "b<":
+            if car.isNumber() and cdr.isNumber():
+                x = car.intVal
+                y = cdr.intVal
+                return BoolLit(x < y)
+            else:
+                return StrLit("Invalid arguments for b<")
+        elif name == "b>":
+            if car.isNumber() and cdr.isNumber():
+                x = car.intVal
+                y = cdr.intVal
+                return BoolLit(x > y)
+            else:
+                return StrLit("Invalid arguments for b>")
