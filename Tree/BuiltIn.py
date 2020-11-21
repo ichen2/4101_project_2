@@ -38,7 +38,7 @@ class BuiltIn(Node):
         cls.util = u
 
     def __init__(self, s):
-        self.symbol = s                 # the Ident for the built-in function
+        self.symbol = s
 
     def getSymbol(self):
         return self.symbol
