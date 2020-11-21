@@ -17,7 +17,7 @@ class Cond(Special):
         cond = exp.getCdr()
         while(cond.getCdr() != Nil.getInstance() and cond.getCar().getCar().eval(env) == BoolLit.getInstance(False)):
             cond = cond.getCdr()
-        if cond.getCar().getCdr() != Nil.getInstance():
-            return cond.getCar().getCdr().eval(env)
+        if cond == Nil.getInstance():
+            return Nil.getInstance()
         else:
-            return cond.getCar().eval(env)
+            return cond.getCar().getCdr().getCar().eval(env)
