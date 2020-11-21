@@ -38,7 +38,7 @@ class BuiltIn(Node):
         cls.util = u
 
     def __init__(self, s):
-        self.symbol = s
+        self.symbol = s                 # the Ident for the built-in function
 
     def getSymbol(self):
         return self.symbol
@@ -61,7 +61,7 @@ class BuiltIn(Node):
     # to report an error.  It should be overridden only in classes
     # BuiltIn and Closure.
     def apply(self, args):
-        print("fdsddf")
+        self.print("fdsddf")
         #return StrLit("Error: BuiltIn.apply not yet implemented")
 
         ## The easiest way to implement BuiltIn.apply is as an

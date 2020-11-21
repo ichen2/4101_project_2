@@ -51,3 +51,14 @@ class Closure(Node):
     # BuiltIn and Closure.
     def apply(self, args):
         return StrLit("Error: Closure.apply not yet implemented")
+        env = self.getEnv()
+        function = getFun()
+        sym = function.getCar()
+        function = function.getCdr().getCar()
+
+        while (not args == None and not args.getCar() == None)
+            env.define(sym.getCar(), args.getCar())
+            sym = sym.getCdr()
+            args = args.getCdr()
+        
+        return function.eval(env)

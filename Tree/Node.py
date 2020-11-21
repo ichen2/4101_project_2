@@ -75,6 +75,10 @@ class Node(ABC):
         self._error("Node.eval not yet implemented")
         return Nil.getInstance()
 
+    def apply(self, args)
+        self._error("Don't use apply in class Node")
+        #do we need to return anything like Nil.getInstance()??
+
     def _error(self, msg):
         sys.stderr.write("Error: " + msg + "\n")
         sys.stderr.flush()
