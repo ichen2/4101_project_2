@@ -64,6 +64,10 @@ if __name__ == "__main__":
         env = Environment(env)
         BuiltIn.setEnv(env)
 
+
+
+        id = Ident("b+")
+        env.define(id, BuiltIn(id))
         # Read-eval-print loop
 
         sys.stdout.write(prompt)
