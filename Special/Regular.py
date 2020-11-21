@@ -32,7 +32,7 @@ class Regular(Special):
             car = exp.getCar()
             cdr = exp.getCdr()
             if car.isSymbol():
-                car = env.lookUp(car)
+                car = env.lookup(car)
             if car == Nil.getInstance():
                 return Nil.getInstance()
             return Cons(car.eval(env), self.evalAll(cdr, env)) 
