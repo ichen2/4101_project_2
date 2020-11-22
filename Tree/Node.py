@@ -53,12 +53,12 @@ class Node(ABC):
     # using parseList.
     def getCar(self):
         from Tree import Nil
-        self._error("argument of car is not a pair")
+       # self._error("argument of car is not a pair")
         return Nil.getInstance()
 
     def getCdr(self):
         from Tree import Nil
-        self._error("argument of cdr is not a pair")
+      #  self._error("argument of cdr is not a pair")
         return Nil.getInstance()
 
     def setCar(self, a):

@@ -178,28 +178,55 @@ class BuiltIn(Node):
         elif name == "pair?":
             return BoolLit.getInstance(car.isPair())
         elif name == "eq?":#come back to this
-            if car.isBool() and cdr.isBool():#
-                BoolLit.getInstance(car.eval(self.env) == cdr.eval(self.env))#
-
+            if car.isBool() and cdr.isBool():
+                return BoolLit.getInstance(car.boolVal == cdr.boolVal)
+            elif car.isNumber() and cdr.isNumber():
+                return BoolLit.getInstance(car.intVal == cdr.intVal)
+            elif car.isSymbol() and cdr.isSymbol():
+                return BoolLit(car.getName().equals(cdr.getName()))
+            elif car == Nil.getInstance():
+                return BoolLit.getInstance(True)
+            elif(car.isPair() and cdr.isPair()):
+                opener = Cons(car.getCar(), Cons(cdr.getCar(), Nil.getInstance()))
+                closer = Cons(car.getCdr(), Cons(cdr.getCdr(), Nil.getInstance()))
+                return BoolLit(apply(opener).boolVal and apply(closer).boolVal)
+            
         elif name == "procedure?":
             return BoolLit.getInstance(car.isProcedure())
-        elif name == "display":
+        elif name == "display": 
             return car
         elif name == "newline":#come back to this
-            return StrLit('\n')
-        #elif name == "read":
-        #   #  parser = Parser(Scanner(sys.stdin),))#com back to this
-        # elif name == "write":#come back to this
-        #     car.print(0)
-        #     return StrLit("")
-        # elif name == "eval":#come back
-        #     return car
-        # elif name == "apply":#come back
-        #     return car.apply(cdr)
-        # elif name == "interaction-development":#come back
-        #     interaction_environment.print(0)
-        # elif name == "load": #come back
-        #     return BoolLit.getInstance(car.isProcedure())
-        # else:
-        #     #what on earth do we do heres
+            StrLit("")
+        elif name == "read":
+            parser = Parser(Scanner(sys.stdin))#com back to this
+            return parser.parseExp()
+        elif name == "write":#come back to this
+            car.print(0)
+            return StrLit("")
+        elif name == "eval":#come back
+             return car
+        elif name == "apply":#come back
+            return car.apply(cdr)
+        elif name == "interaction-development":#come back
+            interaction_environment.print(0)
+        elif name == "load": #come back
+            if not car.isString():
+                self._error("wrong type of argument")
+                return Nil.getInstance()
+            filename = arg1.getStrVal()
+            try:
+                scanner = Scanner(open(filename))
+                builder = TreeBuilder()
+                parser = Parser(scanner, builder)
+
+                root = parser.parseExp()
+                while root != None:
+                    root.eval(BuiltIn.env)
+                    root = parser.parseExp()
+            except IOError:
+                self._error("could not find file " + filename)
+            return Nil.getInstance()  # or Unspecific.getInstance()
+        else:
+            car.print(0)
+            return Nil.getInstance()
         return StrLit(">")

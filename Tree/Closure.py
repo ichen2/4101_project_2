@@ -62,3 +62,7 @@ class Closure(Node):
             args = args.getCdr()
         
         return function.eval(env)
+
+
+    def eval(self, env):
+		return Nil.getInstance()
